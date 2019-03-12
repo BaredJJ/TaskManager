@@ -1,0 +1,44 @@
+﻿@model Dictionary<TaskManager.Models.ProjectTask, TaskManager.Models.Manager>
+
+@{
+    Layout = "_Layout";
+}
+
+<h1>@ViewBag.Title</h1>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+<table class="table table-striped table-bordered table-sm">
+    <thead>
+        <tr>
+            <th class="text-left">Имя</th>
+            <th class="text-left">Создана</th>
+            <th class="text-left">Окончание</th>
+            <th class="text-left">Статус</th>
+            <th class="text-right">Исполнитель</th>
+            <th class="text-center">Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td class="text-left">@task.Key.Name</td>
+                <td class="text-left">@task.Key.StartDateTime</td>
+                <td class="text-left">@task.Key.EnDateTime</td>
+                <td class="text-left">@task.Key.State</td>
+                <td class="text-right">@task.Value.LastName</td>
+                <td class="text-center">
+                    <form asp-action="CloseTask" method="post">
+                        <a asp-action="EditState" class="btn btn-sm btn-warning" asp-route-taskId="@task.Key.Id">Изменить статус</a>
+                        
+                        <input type="hidden" name="taskId" value="@task.Key.Id"/>
+                        <button type="submit" class="btn btn-danger btn-sm">Закрыть</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

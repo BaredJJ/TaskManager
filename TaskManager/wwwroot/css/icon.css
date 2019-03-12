@@ -1,0 +1,78 @@
+﻿.toggle-button {
+    position: fixed;
+    width: 44px;
+    height: 40px;
+    padding: 4px;
+    -ms-transition: .25s;
+    -o-transition: .25s;
+    -webkit-transition: .25s;
+    transition: .25s;
+    z-index: 15;
+}
+
+.toggle-button:hover {
+    cursor: pointer
+}
+
+.toggle-button .menu-bar {
+    position: absolute;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
+    width: 80%;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
+.toggle-button .menu-bar-top {
+    border: 4px solid #555;
+    border-bottom: none;
+    top: 0;
+}
+
+.toggle-button .menu-bar-middle {
+    height: 4px;
+    background-color: #555;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    top: 4px;
+}
+
+.toggle-button .menu-bar-bottom {
+    border: 4px solid #555;
+    border-top: none;
+    top: 22px;
+}
+
+.button-open .menu-bar-top {
+    -ms-transform: rotate(45deg) translate(8px, 8px);
+    -webkit-transform: rotate(45deg) translate(8px, 8px);
+    transform: rotate(45deg) translate(8px, 8px);
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
+.button-open .menu-bar-middle {
+    -ms-transform: translate(230px);
+    -webkit-transform: translate(230px);
+    transform: translate(230px);
+    -ms-transition: .1s ease-in;
+    -o-transition: .1s ease-in;
+    -webkit-transition: .1s ease-in;
+    transition: .1s ease-in;
+    -ms-opacity: 0;
+    opacity: 0;
+}
+
+.button-open .menu-bar-bottom {
+    -ms-transform: rotate(-45deg) translate(8px, -7px);
+    -webkit-transform: rotate(-45deg) translate(8px, -7px);
+    transform: rotate(-45deg) translate(8px, -7px);
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+}

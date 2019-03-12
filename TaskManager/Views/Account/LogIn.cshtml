@@ -1,0 +1,36 @@
+﻿@model LogIn;
+@{
+    ViewData["Title"] = "LogIn";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <title>LogIn</title>
+</head>
+<body class="m-1 p-1">
+    <div class="wrapper">
+        <div class="bg-primary p-4"><h4 class="text-white">LogIn</h4></div>
+    <form asp-action="LogIn" asp-controller="Account" method="post">
+        <input type="hidden" asp-for="ReturnUri" />
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <div><span asp-validation-for="Name" class="text-danger"></span></div>
+            <input asp-for="Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <div><span asp-validation-for="Password" class="text-danger"></span></div>
+            <input asp-for="Password" class="form-control" />
+        </div>
+        <button class="btn btn-primary" type="submit">Log In</button>
+    </form>
+    </div>
+</body>
+</html>
+
+
+

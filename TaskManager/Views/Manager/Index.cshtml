@@ -1,0 +1,29 @@
+﻿@model IEnumerable<TaskManager.Models.Manager>
+@{
+    Layout = "_Layout";
+}
+
+<h1>Список менеджеров</h1>
+
+<table class="table table-striped table-bordered table-sm">
+    <thead>
+    <tr>
+        <th class="text-left">Имя</th>
+        <th class="text-left">Отчество</th>
+        <th class="text-left">Фамилия</th>
+        <th class="text-right">Должность</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var manager in Model)
+    {
+        <tr>
+            <th class="text-left">@manager.FirstName</th>
+            <th class="text-left">@manager.SurName</th>
+            <th class="text-left">@manager.LastName</th>
+            <th class="text-right">@manager.Position</th>
+        </tr>
+    }
+    </tbody>
+</table>
+

@@ -1,0 +1,44 @@
+﻿@model TaskManager.Models.ProjectTask
+
+@{
+    Layout = "_Layout";
+}
+
+<h1>Форма создания</h1>
+
+<div>
+    <form class="p-1" asp-action="Create" method="post">       
+        <div class="form-group">
+            <label>Название:</label>
+            <div ><span asp-validation-for="Name" class="text-danger"></span></div>
+            <input class="form-control" asp-for="Name" />
+        </div>
+        <div class="form-group">
+            <label>Дата окончания:</label>
+            <div><span asp-validation-for="Name" class="text-danger"></span></div>
+            <input type="date" class="form-control" asp-for="EnDateTime" />
+        </div>
+        <div class="form-group">
+            <label>Статус:</label>
+            <select class="form-control" asp-for="State">
+                @foreach (var state in ViewBag.States)
+                {
+                    <option value="@state">@state</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Исполнитель:</label>
+            <select class="form-control" asp-for="ManagerId">
+                @foreach (var manager in ViewBag.Managers)
+                {
+                    <option value="@manager.Id">@manager.FirstName @manager.LastName</option>
+                }
+            </select>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit">Создать</button>
+        </div>
+    </form>
+</div>
+

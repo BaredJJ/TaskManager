@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/icon.css"/>
+    <link rel="stylesheet" href="/css/menu.css"/>
+    <link rel="stylesheet" href="/css/layout.css"/>
+    
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            var $toggleButton = $('.toggle-button'),
+                $menuWrap = $('.menu-wrap'),
+                $sidebarArrow = $('.sidebar-menu-arrow');
+
+            $toggleButton.on('click', function() {
+                $(this).toggleClass('button-open');
+                $menuWrap.toggleClass('menu-show');
+            });
+
+
+            $sidebarArrow.click(function() {
+                $(this).next().slideToggle(300);
+            });
+
+        });
+    </script>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+<header>
+    <span class="toggle-button">
+        <div class="menu-bar menu-bar-top"></div>
+        <div class="menu-bar menu-bar-middle"></div>
+        <div class="menu-bar menu-bar-bottom"></div>
+    </span>
+    <div class="menu-wrap">
+        <div class="menu-sidebar">
+            <div class="form-group">
+                <a class="btn btn-sm btn-primary" asp-action="LogOut" asp-controller="Account">Log Out</a>
+            </div>
+            <ul class="menu">
+                <li>@Html.ActionLink("Главная", "Index", "Home")</li>
+                <li>@Html.ActionLink("Менеджеры", "Index", "Manager")</li>
+                <li class="menu-item-has-children">
+                    @Html.ActionLink("Задачи", "Index", "Task")
+                    <span class="sidebar-menu-arrow"></span>
+                    <ul class="sub-menu">
+                        <li>@Html.ActionLink("Создать", "Create", "Task")</li>
+                        <li>@Html.ActionLink("Горящие задачи", "BurningTasks", "Task")</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="wrapper">
+    @RenderBody()
+</div>
+</body>
+</html>
